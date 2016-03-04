@@ -1,10 +1,11 @@
 <?php
     require_once __DIR__."/../vendor/autoload.php";
-    require_once __DIR__."/../src/Inventory.php";
+    require_once __DIR__."/../src/Store.php";
+    require_once __DIR__."/../src/Brand.php";
 
     $app = new Silex\Application();
 
-    $server = 'mysql:host=localhost;dbname=my_inventory';
+    $server = 'mysql:host=localhost;dbname=shoes';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -13,9 +14,19 @@
     'twig.path' => __DIR__.'/../views'
     ));
 
-    
+    $app->get("/", function() use ($app) {
+        return $app['twig']->render("index.html.twig");
+    });
 
-      return $app;
+    $app->get("/stores", function() use ($app) {
+        return $app['twig']->render("store_index.html.twig");
+    });
+
+    $app->get("/brands", function() use ($app) {
+        return $app['twig']->render("brand_index.html.twig", array('brands' => Brand::getAll()));
+    });
+
+    return $app;
 
 
 ?>

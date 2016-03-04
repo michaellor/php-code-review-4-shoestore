@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>Shoe Brands</title>
+</head>
+<body>
+  <div class="container">
+      <h1>Shoe Brands</h1>
+      <p><a href="/stores">Nike</a></p>
+      {% if brands is not empty %}
+          <h3>List of Brands</h3>
+          <ol>
+              {% for brand in brands %}
+                  
+              {% endfor %}
+      {% endif %}
+
+      <div class="container">
+          <h3>Add a brand</h3>
+          <form action="/add_brand" method="post">
+              <label for="new_brand">Enter Name</label>
+              <input name="new_brand" type="text">
+              <button type="submit" class="btn btn-info">Submit</button>
+          </form>
+      </div>
+  </div>
+
+
+
+</body>
+</html>
