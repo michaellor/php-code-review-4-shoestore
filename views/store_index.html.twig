@@ -4,9 +4,26 @@
 </head>
 <body>
   <div class="container">
-      <h1>Shoe Stores</h1>
-      <p><a href="/stores">Store 1</a></p>
-      <p><a href="/brands">Store 2</a></p>
+    <h1>Shoe Stores</h1>
+
+    {% if stores is not empty %}
+        <h3>List of Stores</h3>
+        <ol>
+            {% for store in stores %}
+                <li><a href="store/{{ store.getId }}">{{ store.getName }}</a></li>
+            {% endfor %}
+    {% endif %}
+
+    <div class="container">
+        <h3>Add a store</h3>
+        <form action="/add_store" method="post">
+            <label for="new_store">Enter Name</label>
+            <input name="new_store" type="text">
+            <button type="submit" class="btn btn-info">Submit</button>
+        </form>
+    </div>
+
+    <p><a href="/">Back</a></p>
   </div>
 
 

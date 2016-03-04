@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title>Store</title>
+</head>
+<body>
+  <div class="container">
+      <h1>{{ store.getName }}</h1>
+
+      <p><a href="/">Back</a></p>
+      <p>Shoe Brand Inventory:<p>
+        {% if shoes is not empty %}
+            <ol>
+                {% for shoe in shoes %}
+                    <li>{{ shoe.getName }}</li>
+                {% endfor %}
+        {% endif %}
+  </div>
+
+
+
+</body>
+</html>
