@@ -1,11 +1,11 @@
-#Hair Salon Database
-####PHP Database Basics Code Review for Epicodus, 02.26.2016
+#Shoe Store Database
+####PHP Databases Extended Code Review for Epicodus, 03.04.2016
 
 ###by Michael Lor
 
 ##Description
 
-This is a website that allows a user to add and remove Stylists to a list. For each Stylist, there is the option to add and remove Clients. This is achieved by utilizing a mysql database to store and retrieve data.
+This is a website that allows for the addition of Shoe Stores and Shoe Brands. A database is used to create, store, and manage data for the Store class, the Brand class, and a join class between the two. Along with adding stores and brands, stores can also be deleted or updated with a new name. The join class allows for many to many relationships, which ties data between both classes, thus allowing the cross referencing of data between the two classes.
 
 ##Setup
 1) Clone this repository to local drive.
@@ -32,11 +32,17 @@ This is a website that allows a user to add and remove Stylists to a list. For e
 
     USE shoes
 
-* NOTE: If you were unable to import the database, please use the following commands from the mysql command line in order to create the database for use:
+* NOTE: If you were unable to import the database, please execute the following commands from the mysql terminal command line in order to create the database for use:
 
     CREATE DATABASE shoes;
 
     USE shoes;
+
+    CREATE TABLE stores (id serial PRIMARY KEY, name VARCHAR(255));
+
+    CREATE TABLE brands (id serial PRIMARY KEY, name VARCHAR(255));
+
+    CREATE TABLE distributions (id serial PRIMARY KEY, brand_id INT, store_id INT);
 
 9) Install Composer by executing the following code in the command line while in the project root folder:
 

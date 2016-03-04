@@ -5,17 +5,14 @@
 </head>
 <body>
   <div class="container">
-    <h1>Shoe Stores</h1>
     <form action="/" method="get">
         <button type="submit" class="btn btn-primary">HOME</button>
     </form>
     <form action="/delete_all_stores" method="post">
         <input name="_method" type="hidden" value="delete">
-        <label for="delete_all">Delete all stores</label>
-        <button type="submit" class="btn btn-danger">DELETE</button>
+        <button type="submit" class="btn btn-danger">DELETE ALL STORES</button>
     </form>
-
-
+    <br>
     {% if stores is not empty %}
         <h3>List of Stores</h3>
         <ol>
