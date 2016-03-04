@@ -21,6 +21,35 @@
             Brand::deleteAll();
         }
 
+        function test_getName()
+        {
+            //Arrange
+            $name = "Nike";
+            $id = 1;
+            $new_store = new Brand($id, $name);
+
+            //Act
+            $result = $new_store->getName($name);
+
+            //Assert
+            $this->assertEquals("Nike", $result);
+        }
+
+        function test_getId()
+        {
+            //Arrange
+            $name = "Nike";
+            $id = 1;
+            $store = new Brand($id, $name);
+            var_dump($store);
+
+            //Act
+            $result = $store->getId($id);
+
+            //Assert
+            $this->assertEquals(1, $result);
+        }
+
 
     }
 

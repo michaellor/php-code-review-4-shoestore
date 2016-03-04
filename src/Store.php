@@ -7,7 +7,7 @@ class Store
     function __construct($name, $id)
     {
         $this->name = $name;
-        $this->id = $name;
+        $this->id = $id;
     }
 
     function setName($new_name)
@@ -17,8 +17,19 @@ class Store
 
     function getName()
     {
-        
+        return $this->name;
     }
+
+    function getId()
+    {
+        return $this->id;
+    }
+
+    static function deleteAll()
+    {
+        $GLOBALS['DB']->exec("DELETE FROM stores");
+    }
+
 
   }
 ?>
