@@ -50,8 +50,9 @@
 
     $app->post("/add_store/{id}", function($id) use ($app) {
         $brand = Brand::find($id);
-        $selected_store = Store::find($_POST['store']);
-        $brand->addStore($selected_store);
+        $store = Store::find($_POST['store']);
+        var_dump($brand);
+        $brand->addStore($store);
         return $app['twig']->render("store_index.html.twig", array('brand' => $brand, 'store_brand' => $brand->getBrands(), 'stores' => Store::getAll()));
     });
 

@@ -87,24 +87,42 @@
 
         function test_addStore()
         {
-          //Arrange
-          $name = "Nike";
-          $id = 1;
-          $brand = new Brand($name, $id);
-          $brand->save();
+            //Arrange
+            $name = "Nike";
+            $id = 1;
+            $brand = new Brand($name, $id);
+            $brand->save();
 
-          $store_name = "Adidas";
-          $store_id = 1;
-          $store = new Store($store_name, $store_id);
-          $store->save();
+            $store_name = "Adidas";
+            $store_id = 1;
+            $store = new Store($store_name, $store_id);
+            $store->save();
 
-          //Act
-          $brand->addStore($store);
+            //Act
+            $brand->addStore($store);
 
-          //Assert
-          $this->assertEquals([$store], $brand->getStores());
+            //Assert
+            $this->assertEquals([$store], $brand->getStores());
         }
 
+        function test_find()
+        {
+            //Arrange
+            $name = "Nike";
+            $id = 1;
+            $brand = new Brand($name, $id);
+            $brand->save();
+            $name2 = "Adidas";
+            $id2 = 2;
+            $brand2 = new Brand($name2, $id2);
+            $brand2->save();
+
+            //Act
+            $result = Brand::find($brand->getId());
+
+            //Assert
+            $this->assertEquals($brand, $result);
+        }
 
 
     }
