@@ -8,7 +8,7 @@
 
       <div class="container">
           <h3>Add a Store to this Brand</h3>
-          <form action="/add_store/{id}" method="post">
+          <form action="/add_store/{{brand.getId}}" method="post">
               <select name="store" class="form-control">
                   {% for store in stores %}
                       <option value='{{store.getId}}'>{{ store.getId}} - {{store.getName}}</option>
