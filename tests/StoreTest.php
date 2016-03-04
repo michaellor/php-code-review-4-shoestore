@@ -49,6 +49,40 @@
             $this->assertEquals(1, $result);
         }
 
+        function test_save()
+        {
+          //Arrange
+          $name = "Bargain Shoes";
+          $id = 1;
+          $store = new Store($name, $id);
+
+          //Act
+          $store->save();
+          $result = Store::getAll();
+
+          //Assert
+          $this->assertEquals([$store], $result);
+        }
+
+        function test_getAll()
+        {
+          //Arrange
+          $name = "Bargain Shoes";
+          $id = 1;
+          $store = new Store($name, $id);
+          $store->save();
+          $name2 = "Best Shoes";
+          $id2 = 2;
+          $store2 = new Store($name2, $id2);
+          $store2->save();
+
+          //Act
+          $result = Store::getAll();
+
+          //Assert
+          $this->assertEquals([$store, $store2], $result);
+        }
+
 
     }
 
