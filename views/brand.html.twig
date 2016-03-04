@@ -9,17 +9,20 @@
       <div class="container">
           <h3>Add a Store to this Brand</h3>
           <form action="/add_store/{id}" method="post">
-              <label for="new_store">Enter Store Name</label>
-              <input name="new_store" type="text">
+              <select name="store" class="form-control">
+                  {% for store in stores %}
+                      <option value='{{store.getId}}'>{{ store.getId}} - {{store.getName}}</option>
+                  {% endfor %}
+              </select>
               <button type="submit" class="btn btn-info">Submit</button>
           </form>
       </div>
 
       <p><a href="/">Back</a></p>
       <p>Stores that stock this brand:<p>
-        {% if stores is not empty %}
+        {% if store_brand is not empty %}
             <ol>
-                {% for store in stores %}
+                {% for store in store_brand %}
                     <li>{{ store.getName }}</li>
                 {% endfor %}
         {% endif %}

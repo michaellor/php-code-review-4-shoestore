@@ -45,13 +45,14 @@
 
     $app->get("/brand/{id}", function($id) use ($app) {
         $brand = Brand::find($id);
-        return $app['twig']->render("brand.html.twig", array('brand' => $brand, 'stores' => $brand->getName()));
+        return $app['twig']->render("brand.html.twig", array('brand' => $brand, 'stores' => Store::getAll()));
     });
 
     $app->post("/add_store/{id}", function($id) use ($app) {
-        $new_store = new Store($_POST['new_store']);
-        $new_store->save();
-        return $app['twig']->render("store_index.html.twig", array('stores' => Store::getAll()));
+        $brand = Brand::find($id);
+        $selected_store = Store::find($_POST['store']);
+        $brand->addStore($selected_store);
+        return $app['twig']->render("store_index.html.twig", array('brand' => $brand, 'store_brand' => $brand->getBrands(), 'stores' => Store::getAll()));
     });
 
     return $app;

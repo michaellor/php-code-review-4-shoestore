@@ -62,7 +62,7 @@ class Brand
 
     function addStore($store)
     {
-        $GLOBALS['DB']->exec("INSERT INTO distributions (store_id, brand_id) VALUES ({$store->getId()}, {$this->getId()});");
+        $GLOBALS['DB']->exec("INSERT INTO distributions (brand_id, store_id) VALUES ({$this->getId()}, {$store->getId()});");
     }
 
     function getStores()
