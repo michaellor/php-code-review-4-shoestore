@@ -105,6 +105,22 @@
           $this->assertEquals([$brand], $store->getBrands());
         }
 
+        function test_update()
+        {
+            //Arrange
+            $name = "Bargain Shoes";
+            $id = 1;
+            $store = new Store($name, $id);
+            $store->save();
+            $new_name = "Wholesale Shoes";
+
+            //Act
+            $store->update($new_name);
+
+            //Assert
+            $this->assertEquals("Wholesale Shoes", $store->getName());
+        }
+
 
     }
 

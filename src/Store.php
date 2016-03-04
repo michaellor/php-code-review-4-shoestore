@@ -83,6 +83,12 @@ class Store
             return $brands;
     }
 
+    function update($new_name)
+    {
+        $GLOBALS['DB']->exec("UPDATE stores SET name = '{$new_name}' WHERE id = {$this->getId()};");
+        $this->setName($new_name);
+    }
+
     static function deleteAll()
     {
         $GLOBALS['DB']->exec("DELETE FROM stores");
