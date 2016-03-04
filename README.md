@@ -32,7 +32,7 @@ This is a website that allows for the addition of Shoe Stores and Shoe Brands. A
 
     USE shoes
 
-* NOTE: If you were unable to import the database, please execute the following commands from the mysql terminal command line in order to create the database for use:
+9) NOTE: Only follow this step if you were unable to import the database. Else, go to step 10. Please execute the following commands from the mysql terminal command line in order to create the database for use:
 
     CREATE DATABASE shoes;
 
