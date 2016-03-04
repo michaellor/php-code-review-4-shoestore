@@ -45,6 +45,29 @@ class Store
             return $stores;
     }
 
+    function addBrand($brand)
+    {
+        $GLOBALS['DB']->exec("INSERT INTO distributions (store_id, brand_id) VALUES ({$this->getId()}, {$brand->getId()});");
+    }
+
+    function getBrands()
+    {
+        $matching_brands = $GLOBALS['DB']->query("SELECT brands.* FROM stores
+                            JOIN distributions ON (stores.id = distributions.store_id)
+                            JOIN brands ON (distributions.brand_id = brands.id)
+                            WHERE stores.id = {$this->getId()}");
+
+        $brands = array();
+        foreach($matching_brands as $brand)
+            {
+                $name = $brand['name'];
+                $id = $brand['id'];
+                $new_brand = new Brand($name, $id);
+                array_push($brands, $new_brand);
+            }
+            return $brands;
+    }
+
     static function deleteAll()
     {
         $GLOBALS['DB']->exec("DELETE FROM stores");
