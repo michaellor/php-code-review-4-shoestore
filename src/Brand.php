@@ -4,7 +4,7 @@ class Brand
     private $name;
     private $id;
 
-    function __construct($name, $id)
+    function __construct($name, $id = null)
     {
         $this->name = $name;
         $this->id = $id;
@@ -29,6 +29,21 @@ class Brand
     {
         $GLOBALS['DB']->exec("INSERT INTO brands (name) VALUES ('{$this->getName()}');");
         $this->id = $GLOBALS['DB']->lastInsertId();
+    }
+
+    static function find($search_id)
+    {
+        $found_brand = null;
+        $brands = Brand::getAll();
+        foreach($brands as $brand)
+        {
+            $brand_id = $brand->getId();
+            if ($brand_id == $search_id)
+            {
+                $found_brand = $brand;
+            }
+        }
+        return $found_brand;
     }
 
     static function getAll()
