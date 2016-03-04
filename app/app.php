@@ -33,6 +33,13 @@
         return $app['twig']->render("store.html.twig", array('store' => $store, 'brands' => Brand::getAll()));
     });
 
+    $app->post("/add_brand/{id}", function($id) use ($app) {
+        $store = Store::find($id);
+        $brand = Brand::find($_POST['brand']);
+        $store->addBrand($brand);
+        return $app['twig']->render("store.html.twig", array('store' => $store, 'store_brand' => $store->getBrands(), 'brands' => Brand::getAll()));
+    });
+
     $app->get("/brands", function() use ($app) {
         return $app['twig']->render("brand_index.html.twig", array('brands' => Brand::getAll()));
     });
@@ -52,7 +59,6 @@
         $brand = Brand::find($id);
         $store = Store::find($_POST['store']);
         $brand->addStore($store);
-        var_dump($brand);
         return $app['twig']->render("brand.html.twig", array('brand' => $brand, 'store_brand' => $brand->getStores(), 'stores' => Store::getAll()));
     });
 
