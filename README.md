@@ -18,7 +18,7 @@ This is a website that allows for the addition of Shoe Stores and Shoe Brands. A
 
 4) Input the word 'root' for username and password.
 
-5) Using phpMyAdmin, import the hair_salon.sql.zip included in the root directory of this project.
+5) Using phpMyAdmin, import the shoes.sql and shoes_test.sql files included in the root directory of this project.
 
 6) Start mysql by executing the following from the command line:
 
