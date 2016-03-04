@@ -1,16 +1,26 @@
 <html>
 <head>
     <title>Shoe Stores</title>
+    {% include 'css_codes.html' %}
 </head>
 <body>
   <div class="container">
     <h1>Shoe Stores</h1>
+    <form action="/" method="get">
+        <button type="submit" class="btn btn-primary">HOME</button>
+    </form>
+    <form action="/delete_all_stores" method="post">
+        <input name="_method" type="hidden" value="delete">
+        <label for="delete_all">Delete all stores</label>
+        <button type="submit" class="btn btn-danger">DELETE</button>
+    </form>
+
 
     {% if stores is not empty %}
         <h3>List of Stores</h3>
         <ol>
             {% for store in stores %}
-                <li><a href="store/{{ store.getId }}">{{ store.getName }}</a></li>
+                <li class="medium_txt"><a href="store/{{ store.getId }}">{{ store.getName }}</a></li>
             {% endfor %}
     {% endif %}
 
@@ -22,11 +32,6 @@
             <button type="submit" class="btn btn-info">Submit</button>
         </form>
     </div>
-
-    <p><a href="/">Back</a></p>
   </div>
-
-
-
 </body>
 </html>

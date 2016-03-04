@@ -1,10 +1,26 @@
 <html>
 <head>
     <title>Store</title>
+    {% include 'css_codes.html' %}
 </head>
 <body>
   <div class="container">
       <h1>{{ store.getName }}</h1>
+      <form action="/" method="get">
+          <button type="submit" class="btn btn-primary">HOME</button>
+      </form>
+      <h3>Edit Title</h3>
+          <form  action="/update_store/{{ store.getId }}" method="post">
+          <input name="_method" type="hidden" value="patch">
+          <label for="new_name">New Store Name:</label>
+          <input name="new_name" type="text" value="{{ store.getName }}">
+          <button type="submit" class="btn btn-info">Confirm</button>
+          </form>
+      <h3>Delete this store</h3>
+      <form action="/delete_store/{{ store.getId }}" method="post">
+          <input name="_method" type="hidden" value="delete">
+          <button type="submit" class="btn btn-danger">Delete</button>
+      </form>
 
       <h3>Add a Brand to this Store</h3>
       <form action="/add_brand/{{store.getId}}" method="post">
@@ -17,16 +33,13 @@
       </form>
 
       <p><a href="/">Back</a></p>
-      <p>Shoe Brand Inventory:<p>
-        {% if store_brand is not empty %}
-            <ol>
-                {% for brand in store_brand %}
-                    <li>{{ brand.getName }}</li>
-                {% endfor %}
-        {% endif %}
+      <p class="medium_txt">Shoe Brand Inventory:<p>
+      <ol>
+          {% for brand in store_brand %}
+              <li>{{ brand.getName }}</li>
+          {% endfor %}
+      </ol>
+    <p><a href="/">Home</a></p>
   </div>
-
-
-
 </body>
 </html>

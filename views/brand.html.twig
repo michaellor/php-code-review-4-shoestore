@@ -1,11 +1,14 @@
 <html>
 <head>
     <title>Shoe Brands</title>
+    {% include 'css_codes.html' %}
 </head>
 <body>
   <div class="container">
       <h1>{{ brand.getName }}</h1>
-
+      <form action="/" method="get">
+          <button type="submit" class="btn btn-primary">HOME</button>
+      </form>
       <div class="container">
           <h3>Add a Store to this Brand</h3>
           <form action="/add_store/{{brand.getId}}" method="post">
@@ -20,15 +23,11 @@
 
       <p><a href="/">Back</a></p>
       <p>Stores that stock this brand:<p>
-        {% if store_brand is not empty %}
-            <ol>
-                {% for store in store_brand %}
-                    <li>{{ store.getName }}</li>
-                {% endfor %}
-        {% endif %}
+      <ol>
+          {% for store in store_brand %}
+              <li class="medium_txt">{{ store.getName }}</li>
+          {% endfor %}
+      </ol>
   </div>
-
-
-
 </body>
 </html>

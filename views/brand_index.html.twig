@@ -1,16 +1,20 @@
 <html>
 <head>
     <title>Shoe Brands</title>
+    {% include 'css_codes.html' %}
 </head>
 <body>
   <div class="container">
       <h1>Shoe Brands</h1>
+      <form action="/" method="get">
+          <button type="submit" class="btn btn-primary">HOME</button>
+      </form>
 
       {% if brands is not empty %}
           <h3>List of Brands</h3>
           <ol>
               {% for brand in brands %}
-                  <li><a href="brand/{{ brand.getId }}">{{ brand.getName }}</a></li>
+                  <li class="medium_txt"><a href="brand/{{ brand.getId }}">{{ brand.getName }}</a></li>
               {% endfor %}
       {% endif %}
 
@@ -22,8 +26,6 @@
               <button type="submit" class="btn btn-info">Submit</button>
           </form>
       </div>
-
-      <p><a href="/">Back</a></p>
   </div>
 
 
